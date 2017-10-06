@@ -1,0 +1,11 @@
+{
+  "name": "react-starter",
+  "version": "0.1.0",
+  "description": "Starter project for app's with React and Redux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dmytro Halimov",
+  "license": "MIT"
+}

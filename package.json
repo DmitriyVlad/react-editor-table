@@ -20,7 +20,12 @@
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["prettier --write", "npm run lint", "npm run lint-fix", "git add"],
+    "*.js": [
+      "prettier --write",
+      "npm run lint",
+      "npm run lint:autofix",
+      "git add"
+    ],
     "*.scss": ["stylelint --syntax=scss", "git add"],
     "*.css": ["stylelint", "git add"]
   },

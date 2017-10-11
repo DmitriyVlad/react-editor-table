@@ -1,0 +1,320 @@
+@import '~Styles/imports';
+
+.Link {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-regular;
+  font-size: $pt-font-size-secondary;
+  color: $color-accent;
+  text-decoration: none;
+
+  &:hover{
+    color: $color-text-main;
+    text-decoration: underline;
+  }
+
+  &--accent {
+    font-weight: $font-weight-regular;
+    color: $color-warning;
+    @include border-bottom(solid, transparent);
+
+    &:hover {
+      color: $color-warning;
+
+      @include border-bottom(dashed, $color-warning);
+      text-decoration: none;
+    }
+  }
+
+  &--invert {
+    color: #fff;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &--as-text {
+    color: $color-text-main;
+    
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &--navbar-button {
+    font-size: $font-size-base;
+    font-weight: $font-weight-light;
+    margin: 0 $navbar-link-padding;
+    position: relative;
+
+    &:after {
+      content: '';
+      display: inline-block;
+      width: $navbar-link-divider-width;
+      height: $navbar-link-divider-height;
+      background-color: $color-border-main;
+      position: absolute;
+      right: $navbar-link-padding;
+      top: 50%;
+      margin-top: -($navbar-link-divider-height / 2);
+    }
+
+    &:last-child:after{
+      display: none;
+    }
+  }
+
+  &--logo {
+    @include border($color-border-main);
+    background-color: #ffffff;
+    border-radius: 105px / 52.5px;
+    display: inline-block;
+    width: $logo-width-default;
+    height: $logo-height-default;
+    box-shadow: $pt-shadow-soft;
+    position: relative;
+
+    &:before {
+      content: '';
+      width: 115%;
+      height: $navbar-height - 1;
+      background-color: #ffffff;
+      position: absolute;
+      top: -1px;
+      left: -10px;
+    }
+
+    & img {
+      position: absolute;
+      top: 12%;
+      left: 50%;
+      margin-left: -76.5px;
+    }
+  }
+
+  &--navigation {
+    font-weight: $font-weight-light;
+    width: auto;
+    padding: 0 $navbar-btn-padding;
+    color: $color-text-main;
+    line-height: $button-group-height-large;
+    position: relative;
+    display: inline-block;
+    height: $navbar-height;
+    min-height: $button-group-height-large;
+    @include transition(all .35s ease-out);
+    font-size: $font-size-base;
+
+    &:first-child {
+      @include border-left(solid, $color-border-main);
+    }
+
+    &:last-child {
+      @include border-right(solid, $color-border-main);
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      display: inline-block;
+      width: 1px;
+      background-color: $color-border-main;
+      left: -1px;
+      right: initial;
+      top: $pt-navbar-divider-top;
+      bottom: $pt-navbar-divider-top;
+      @include transition(all .35s ease-in-out);
+    }
+
+    &:hover {
+      background: $color-bg-main-darker;
+      border-color: $color-bg-main-darker;
+      color: $color-text-main;
+      text-decoration: none;
+
+      &:before {
+        background: transparent;
+      }
+
+      & + .Link:before {
+        background: transparent;
+      }
+    }
+
+    &:active,
+    &:focus {
+      outline: 0;
+      background: $color-accent-active;
+      border-color: $color-accent-active;
+      color: #fff;
+
+      &:before,
+      &:after {
+        background: transparent;
+      }
+
+      &:hover {
+        background: $color-accent-active !important;
+        border-color: $color-accent-active;
+        color: #fff;
+      }
+
+      & + .Link:before {
+        background: transparent;
+      }
+    }
+
+    &.Link--active-nav {
+      &:hover {
+        background: $color-accent-active;
+        border-color: $color-accent-active;
+        color: #fff;
+      }
+    }
+  }
+
+  &--button-group {
+    font-weight: $font-weight-light;
+    @include border-top(solid, $color-border-main);
+    @include border-bottom(solid, $color-border-main);
+    width: auto;
+    padding: 0 $navbar-btn-padding;
+    color: $color-text-main;
+    line-height: $button-group-height-large;
+    position: relative;
+    display: inline-block;
+    height: $navbar-height;
+    min-height: $button-group-height-large;
+    @include transition(all .35s ease-out);
+    font-size: $font-size-base;
+
+    &:first-child {
+      @include border-left(solid, $color-border-main);
+    }
+
+    &:last-child {
+      @include border-right(solid, $color-border-main);
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      display: inline-block;
+      width: 1px;
+      background-color: $color-border-main;
+      left: -1px;
+      right: initial;
+      top: $pt-navbar-divider-top;
+      bottom: $pt-navbar-divider-top;
+      @include transition(all .35s ease-in-out);
+    }
+
+    &:hover {
+      background: $color-bg-main-darker;
+      border-color: $color-bg-main-darker;
+      color: $color-text-main;
+      text-decoration: none;
+
+      &:before {
+        background: transparent;
+      }
+
+      & + .Link:before {
+        background: transparent;
+      }
+    }
+
+    &:active,
+    &:focus {
+      outline: 0;
+      background: $color-accent-active;
+      border-color: $color-accent-active;
+      color: #fff;
+
+      &:before,
+      &:after {
+        background: transparent;
+      }
+
+      &:hover {
+        background: $color-accent-active !important;
+        border-color: $color-accent-active;
+        color: #fff;
+      }
+
+      & + .Link:before {
+        background: transparent;
+      }
+    }
+
+    &.Link--active-nav {
+      &:hover {
+        background: $color-accent-active;
+        border-color: $color-accent-active;
+        color: #fff;
+      }
+    }
+  }
+
+  &--active-nav {
+    outline: 0;
+    background: $color-accent-active;
+    border-color: $color-accent-active;
+    color: #fff;
+
+    &:before,
+    &:after {
+      background: transparent;
+    }
+
+    & + .Link:before {
+      background: transparent;
+    }
+
+    &:hover {
+      background: $color-accent-active;
+      border-color: $color-accent-active;
+      color: #fff;
+    }
+
+    &:first-child,
+    &:last-child {
+      border-color: transparent;
+    }
+  }
+
+  &--mobile-menu {
+    display: block;
+    font-size: $font-size-base;
+    padding: $pt-menu-list-padding;
+    color: $color-text-main;
+    text-decoration: none;
+    @include transition(all .25s ease-in-out);
+
+    &:hover,
+    &:active {
+      color: $color-accent;
+      background: $color-bg-main-darker;
+      text-decoration: none;
+    }
+  }
+
+  &--auth-menu {
+    font-weight: $font-weight-light;
+    padding: 0 $authorized-menu-padding-left-right-xs;
+    margin-top: $authorized-menu-item-margin-top;
+    color: $color-bg-secondary;
+    text-align: center;
+    float: left;
+
+    @include susy-breakpoint($breakpoint-width-s) {
+      padding: 0 $authorized-menu-padding-left-right-m;
+      float: none;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: $color-accent;
+    }
+  }
+}

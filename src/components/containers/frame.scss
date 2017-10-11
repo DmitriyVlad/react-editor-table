@@ -1,0 +1,19 @@
+@import '~Styles/imports';
+
+@include scut-sticky-footer-fluid('.Frame', '.Frame__Footer');
+
+.Frame {
+  color: $color-text-main;
+}
+
+.Frame__Content {
+  display: table-row;
+  min-height: 100%;
+}
+
+.Frame__FooterContent {
+  text-align: right;
+  margin-right: $spacing-s;
+  color: $color-inactive;
+  font-size: $font-size-xxs;
+}

@@ -1,0 +1,28 @@
+@import '~Styles/imports';
+
+.ButtonClose {
+  float: right;
+
+  margin: $button-close-margin-top $button-close-margin;
+
+  cursor: pointer;
+
+  border: none;
+  background-color: $color-bg-main;
+
+  &:before {
+    font-family: $icons20-family;
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-bold;
+
+    content: '\2717';
+    @include transition(all .15s linear);
+    color: $color-accent;
+  }
+
+  &:hover {
+    &:before {
+      color: $color-button-hover;
+    }
+  }
+}

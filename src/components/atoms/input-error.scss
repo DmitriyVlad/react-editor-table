@@ -1,0 +1,16 @@
+@import '~Styles/imports';
+
+.ErrorMessage {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-regular;
+  color: $color-warning;
+  margin-bottom: $error-message-margin-bottom;
+
+  &--invisible {
+    display: none;
+  }
+
+  &--visible {
+    display: block;
+  }
+}

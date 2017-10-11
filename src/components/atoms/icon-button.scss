@@ -1,0 +1,57 @@
+@import '~Styles/imports';
+
+.IconButton.pt-button {
+  font-size: $font-size-base;
+  background: none;
+  margin: $icon-button-margin;
+  border-radius: 50%;
+  @include border($color-border-main);
+  width: $icon-button-size-s;
+  height: $icon-button-size-s;
+  line-height: $icon-button-size-s - 2;
+  @include transition(all .25s ease-out);
+
+  @include susy-breakpoint($breakpoint-width-m) {
+    width: $icon-button-size;
+    height: $icon-button-size;
+    line-height: $icon-button-size - 2;
+  }
+}
+
+.IconButton.pt-button[class*="pt-icon-"]::before {
+  line-height: 1;
+  font-family: $icons16-family, sans-serif;
+  font-size: $pt-icon-size-standard;
+  font-weight: $font-weight-regular;
+  font-style: normal;
+  color: $color-accent;
+}
+
+.IconButton.pt-button:not([class*="pt-intent-"]):hover {
+  background: $color-accent;
+  border-color: $color-accent;
+
+  &:before {
+    color: #fff;
+  }
+}
+
+.IconButton.pt-button:not([class*="pt-intent-"]):active, 
+.IconButton.pt-button:not([class*="pt-intent-"]).pt-active {
+  background: $color-accent-active;
+  border-color: $color-accent-active;
+
+  &:before {
+    color: #fff;
+  }
+}
+
+.IconButton.pt-button:not([class*="pt-intent-"]):disabled, 
+.IconButton.pt-button:not([class*="pt-intent-"]).pt-disabled {
+  background: $color-button-disabled;
+  border-color: $color-button-disabled;
+
+  &:before {
+    color: #fff;
+  }
+}

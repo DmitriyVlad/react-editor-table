@@ -1,0 +1,46 @@
+@import '~Styles/imports';
+
+
+.CountdownTimer {
+  color: #ffffff;
+  font-size: $font-size-xl;
+  display: none;
+
+  @include susy-breakpoint($breakpoint-width-m) {
+   display: block;
+  }
+
+  &__block {
+    width: $timer-block-width;
+    float: left;
+    margin-right: $timer-block-margin;
+
+    .CountdownTimer__title {
+      color: #ffffff;
+      text-align: center;
+      font-family: $font-family-accent;
+      font-weight: $font-weight-medium;
+    }
+
+    .CountdownTimer__digits {
+
+      .CountdownTimer__digit {
+        width: $timer-digit-width;
+        height: $timer-digit-height;
+        font-weight: $font-weight-regular;
+        font-size: $pt-font-size-small-3;
+        font-family: $font-family-accent;
+        background-color: rgba(42, 42, 42, 0.5);
+        display: inline-block;
+        border-radius: $timer-digit-border-radius;
+        margin-right: $timer-digit-margin;
+        text-align: center;
+        padding-top: $timer-digit-padding-top;
+
+        & + span {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

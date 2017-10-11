@@ -1,0 +1,30 @@
+@import '~Styles/imports';
+
+.ButtonMenu {
+  margin: $button-menu-margin-top $button-menu-margin-left-right 0;
+  padding: $button-menu-padding;
+  cursor: pointer;
+  border: none;
+  outline: 0;
+  transform: rotate(90deg);
+  background-color: transparent;
+  position: relative;
+
+  @include susy-breakpoint($breakpoint-width-m) {
+    margin: $button-menu-margin-top 0 0;
+  }
+
+  &:before {
+    font-family: $icons20-family;
+    font-size: $pt-icon-size-extra-large;
+    content: '\e62a';
+    @include transition(all .15s linear);
+    color: $color-button-hover;
+  }
+
+  &:hover {
+    &:before {
+      color: $color-accent;
+    }
+  }
+}

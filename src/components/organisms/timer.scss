@@ -1,0 +1,11 @@
+@import '~Styles/imports';
+
+.Timer {
+
+  .Timer__Content {
+    font-size: $font-size-xl;
+  }
+  .Timer__Actions {
+    margin-top: $spacing-xl;
+  }
+}

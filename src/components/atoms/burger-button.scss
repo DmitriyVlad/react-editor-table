@@ -1,0 +1,61 @@
+@import '~Styles/imports';
+
+.BurgerButton {
+  margin-top: $burger-margin-top;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+  height: $burger-size;
+  width: $burger-size;
+  padding: $burger-padding;
+  background: 0 0;
+  user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: none;
+
+  &__icon {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: $burger-icon-height;
+    vertical-align: bottom;
+    background: $color-bg-accent;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: $burger-icon-height;
+      background: $color-bg-accent;
+      transform-origin: 50% 50%;
+      transition: background-color 0.25s ease-out, transform 0.25s ease-out;
+    }
+
+    &:before {
+      top: $burger-icon-top;
+    }
+
+    &:after {
+      top: -$burger-icon-top;
+    }
+  }
+}
+
+.BurgerButton--active {
+  .BurgerButton__icon {
+    background: transparent;
+    
+    &:before {
+      transform: translateY(-$burger-icon-top) rotate(-45deg);
+    }
+
+    &:after {
+      transform: translateY($burger-icon-top) rotate(45deg);
+    }
+  }
+}

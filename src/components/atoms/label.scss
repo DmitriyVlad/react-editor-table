@@ -1,0 +1,9 @@
+@import '~Styles/imports';
+
+.Label {
+  font-family: $font-family-primary;
+  font-size: $pt-font-size-secondary;
+  font-weight: $font-weight-regular;
+  color: $color-text-main;
+  margin: 0 0 $label-margin-bottom;
+}

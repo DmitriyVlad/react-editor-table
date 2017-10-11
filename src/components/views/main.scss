@@ -1,0 +1,11 @@
+@import '~Styles/imports';
+
+.Main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.Main__Content {
+  flex: 1 0 auto;
+}

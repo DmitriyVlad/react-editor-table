@@ -1,0 +1,63 @@
+@import '~Styles/imports';
+
+.Input {
+  font-family: $font-family-primary;
+  font-size: $pt-font-size-secondary;
+  font-weight: $font-weight-light;
+  color: $color-text-main;
+  
+  width: $base-width;
+  margin: $input-margin-top 0 $input-margin-bottom;
+  padding: $input-padding-top $input-padding-left;
+
+  border-radius: 0;
+  @include border($color-border-main);
+  outline: 0;
+
+  @include placeholder($color-placeholder);
+
+  &--none-resizable {
+    resize: none;
+  }
+
+  &[type="search"] {
+    position: relative;
+    -webkit-appearance: textfield;
+    margin: 0;
+    padding-left: $input-padding-left-search;
+  }
+
+  &:focus {
+    @include border($color-accent);
+    box-shadow: $pt-shadow-accent;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: #fff;
+    opacity: 0.5;
+  }
+
+  &--error {
+    @include border($color-warning);
+    margin-bottom: $input-margin-bottom-error;
+
+    &:disabled {
+      border-color: $color-border-main;
+      box-shadow: none;
+    }
+
+    &:focus {
+      @include border($color-warning);
+      box-shadow: $pt-shadow-warning;
+    }
+  }
+
+  &--large {
+    padding: $input-padding-top-large $input-padding-left;
+  }
+
+  &--registration {
+    margin: 0;
+  }
+}

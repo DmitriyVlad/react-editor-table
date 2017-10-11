@@ -98,11 +98,16 @@ const webpackConfig = {
       },
       {
         test: /\.(png|gif|jpe?g)$/i,
-        loader: 'url-loader',
-        query: {
-          limit: 8192,
-          name: 'assets/images/[name].[ext]?[hash]'
-        }
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: 'assets/images/[name].[ext]?[hash]'
+            }
+          },
+          'image-webpack-loader'
+        ]
       },
       {
         test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,
@@ -131,12 +136,17 @@ const webpackConfig = {
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url-loader',
-        query: {
-          limit: 8192,
-          mimetype: 'image/svg+xml',
-          name: 'assets/images/icons/[name].[ext]'
-        }
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              mimetype: 'image/svg+xml',
+              name: 'assets/images/icons/[name].[ext]'
+            }
+          },
+          'image-webpack-loader'
+        ]
       }
     ]
   },
@@ -177,7 +187,8 @@ const webpackConfig = {
       analyzerMode: 'static',
       analyzerPort: 4000,
       openAnalyzer: false
-    })
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ]
 };
 

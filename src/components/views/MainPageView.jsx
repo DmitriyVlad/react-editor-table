@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import scrollToTop from 'Helpers/scroll-to-top';
+import bgHero from './bg-hero.jpg';
 
 class MainPageView extends Component {
   componentDidMount() {
@@ -10,7 +11,10 @@ class MainPageView extends Component {
 
   render() {
 
-    return <p>Hello world!</p>;
+    return [
+      <p>Hello world!</p>,
+      <img src={ bgHero } alt="" />
+    ];
   }
 }
 

@@ -1,9 +1,4 @@
-
-
-import {
-  NotificationActionTypes,
-  NotificationActions
-} from './notifications';
+import { NotificationActionTypes, NotificationActions } from './notifications';
 
 /*
  * Actions for User
@@ -21,83 +16,67 @@ export const UserActionTypes = {
   NOT_AUTHENTICATED: 'USER_NOT_AUTHENTICATED'
 };
 
-
 function signUp(formdata, cb) {
-
   return (dispatch, _getState, api) => {
-
-    api.user.signup(dispatch, formdata)
-      .then( (res) => {
-
+    api.user
+      .signup(dispatch, formdata)
+      .then((res) => {
         cb(null, res);
       })
-      .catch( (err) => {
-
-        err.response.then( (json) => {
-
+      .catch((err) => {
+        err.response.then((json) => {
           const nextErr = {
             ...err,
             json
           };
           cb(nextErr);
         });
-
       });
   };
 }
 
 function activate(token, cb) {
-
   return (dispatch, _getState, api) => {
-
-    api.user.activate(dispatch, token).then((res) => {
-
-      cb(null, res);
-    }).catch((err) => {
-
-      err.response.then((json) => {
-
-        const nextErr = {
-          ...err,
-          json
-        };
-        cb(nextErr);
-      });
-    });
-  };
-}
-
-function checkUsernameOrEmail(formdata, cb) {
-
-  return (dispatch, _getState, api) => {
-
-    api.user.checkUsernameAndEmail(dispatch, formdata)
-      .then( (res) => {
-
+    api.user
+      .activate(dispatch, token)
+      .then((res) => {
         cb(null, res);
       })
-      .catch( (err) => {
-
-        err.response.then( (json) => {
-
+      .catch((err) => {
+        err.response.then((json) => {
           const nextErr = {
             ...err,
             json
           };
           cb(nextErr);
         });
-
       });
   };
+}
 
+function checkUsernameOrEmail(formdata, cb) {
+  return (dispatch, _getState, api) => {
+    api.user
+      .checkUsernameAndEmail(dispatch, formdata)
+      .then((res) => {
+        cb(null, res);
+      })
+      .catch((err) => {
+        err.response.then((json) => {
+          const nextErr = {
+            ...err,
+            json
+          };
+          cb(nextErr);
+        });
+      });
+  };
 }
 
 function signIn(email, password, remember, cb = () => {}) {
-
   const addTimedNotification = NotificationActions.addTimedNotification;
 
   return (dispatch, getState, api) => {
-
     const state = getState().get('user');
 
     if (state.authLoading) {
@@ -108,9 +87,9 @@ function signIn(email, password, remember, cb = () => {}) {
       issuer: 'auth_actions'
     });
     dispatch({ type: UserActionTypes.AUTH_LOADING });
-    api.user.login(dispatch, email, password)
-      .then( (response) => {
-
+    api.user
+      .login(dispatch, email, password)
+      .then((response) => {
         localStorage.setItem('id', response.id);
         localStorage.setItem('remember', remember);
         dispatch({
@@ -128,7 +107,6 @@ function signIn(email, password, remember, cb = () => {}) {
         cb(true);
       })
       .catch((err) => {
-
         dispatch({ type: UserActionTypes.AUTH_ERROR });
 
         dispatch({
@@ -146,14 +124,11 @@ function signIn(email, password, remember, cb = () => {}) {
 }
 
 function initAuth() {
-
   return { type: UserActionTypes.INIT_AUTH };
 }
 
 function fetchProfile(id) {
-
   return (dispatch, getState, api) => {
-
     const state = getState().get('user');
     if (state.profile) {
       return;
@@ -163,17 +138,15 @@ function fetchProfile(id) {
       return;
     }
     dispatch({ type: UserActionTypes.PROFILE_LOADING });
-    api.user.getProfile(dispatch, id)
-      .then( (res) => {
-
+    api.user
+      .getProfile(dispatch, id)
+      .then((res) => {
         dispatch({
           type: UserActionTypes.PROFILE_SUCCESS,
           profile: res
         });
-
       })
-      .catch( (err) => {
-
+      .catch((err) => {
         dispatch({
           type: UserActionTypes.PROFILE_ERROR,
           err
@@ -183,22 +156,19 @@ function fetchProfile(id) {
 }
 
 function signOut() {
-
   return (dispatch, _getState, api) => {
-
-    api.user.logout(dispatch)
-      .then( () => {
-
+    api.user
+      .logout(dispatch)
+      .then(() => {
         localStorage.removeItem('jwt');
-        if ( !localStorage.remember ) {
+        if (!localStorage.remember) {
           localStorage.removeItem('id');
         }
         dispatch({
           type: UserActionTypes.SIGNED_OUT
         });
       })
-      .catch( (_err) => {
-      });
+      .catch((_err) => {});
   };
 }
 

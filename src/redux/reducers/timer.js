@@ -9,13 +9,8 @@ const initialState = {
   interval: 0
 };
 
-function TimerReducer(
-  state = new Map(initialState),
-  action = {}
-) {
-
+function TimerReducer(state = new Map(initialState), action = {}) {
   switch (action.type) {
-
     case TimerActionTypes.TIMER_START:
       return new Map({
         running: true,

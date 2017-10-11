@@ -1,5 +1,3 @@
-
-
 /*
  * Actions for Notifications
  */
@@ -10,15 +8,8 @@ export const NotificationActionTypes = {
   NOTIFICATION_PURGE: 'NOTIFICATION_PURGE'
 };
 
-function addTimedNotification({
-  message,
-  type,
-  issuer,
-  timeout
-}) {
-
+function addTimedNotification({ message, type, issuer, timeout }) {
   return (dispatch) => {
-
     const id = new Date().valueOf();
     dispatch({
       type: NotificationActionTypes.NOTIFICATION_ADD,
@@ -30,8 +21,7 @@ function addTimedNotification({
         timeout
       }
     });
-    setTimeout( () => {
-
+    setTimeout(() => {
       dispatch({
         type: NotificationActionTypes.NOTIFICATION_REMOVE,
         id

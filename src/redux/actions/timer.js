@@ -1,5 +1,3 @@
-
-
 /*
  * Actions for Timer
  */
@@ -12,13 +10,8 @@ const TimerActionTypes = {
 
 let timerId = null;
 
-function startTimer({
-  interval,
-  initialVal
-}) {
-
+function startTimer({ interval, initialVal }) {
   return (dispatch) => {
-
     if (timerId) {
       // if timer is already running, skip it
       return;
@@ -29,8 +22,7 @@ function startTimer({
       interval,
       initialVal
     });
-    timerId = setInterval( () => {
-
+    timerId = setInterval(() => {
       dispatch({
         type: TimerActionTypes.TIMER_INCREMENT
       });
@@ -39,9 +31,7 @@ function startTimer({
 }
 
 function stopTimer() {
-
   return (dispatch) => {
-
     if (!timerId) {
       // if no timer is running, skip it
       return;

@@ -1,8 +1,6 @@
 import { IntlActionTypes } from '../actions/intl';
 
-
 function initialState() {
-
   return {
     messages: {},
     content: {},
@@ -10,12 +8,7 @@ function initialState() {
   };
 }
 
-function IntlReducer(
-  state = initialState(),
-  action = {}
-) {
-
-
+function IntlReducer(state = initialState(), action = {}) {
   switch (action.type) {
     case IntlActionTypes.SET_LOCALE:
       return {

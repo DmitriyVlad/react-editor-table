@@ -1,9 +1,5 @@
 import Immutable from 'immutable';
-import {
-  createStore as reduxCreateStore,
-  applyMiddleware,
-  compose
-} from 'redux';
+import { createStore as reduxCreateStore, applyMiddleware, compose } from 'redux';
 import { combineReducers } from 'redux-immutable';
 import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
@@ -30,10 +26,10 @@ const reducer = combineReducers({
 });
 
 function createStore(history) {
-
   const myRouterMiddleware = routerMiddleware(history);
 
-  if (__DEVTOOLS__) { // eslint-disable-line no-undef
+  // eslint-disable-next-line no-undef
+  if (__DEVTOOLS__) {
     const store = compose(
       applyMiddleware(thunk.withExtraArgument(kangApi), myRouterMiddleware),
       window.devToolsExtension ? window.devToolsExtension() : f => f
@@ -42,7 +38,6 @@ function createStore(history) {
     if (module.hot) {
       // Enable Webpack hot module replacement for reducers
       module.hot.accept('./', () => {
-
         const nextReducer = require('./'); // eslint-disable-line global-require
         store.replaceReducer(nextReducer);
       });
@@ -51,12 +46,9 @@ function createStore(history) {
     return store;
   }
 
-  const store = compose(
-    applyMiddleware(
-      thunk.withExtraArgument(kangApi),
-      myRouterMiddleware
-    )
-  )(reduxCreateStore)(reducer, Immutable.Map({}));
+  const store = compose(applyMiddleware(thunk.withExtraArgument(kangApi), myRouterMiddleware))(
+    reduxCreateStore
+  )(reducer, Immutable.Map({}));
 
   return store;
 }

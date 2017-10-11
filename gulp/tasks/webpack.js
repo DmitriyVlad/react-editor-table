@@ -33,7 +33,7 @@ function handler(err, stats, cb) {
   if (typeof cb === 'function') cb();
 }
 
-gulp.task('webpack', (cb) => {
+gulp.task('webpack', cb => {
   webpack(webpackConfig(config.env)).run((err, stats) => {
     handler(err, stats, cb);
   });

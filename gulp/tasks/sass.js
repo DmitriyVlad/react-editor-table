@@ -32,23 +32,29 @@ gulp.task('sass', () =>
     .pipe(sourcemaps.init())
     .pipe(cssGlobbing())
     .pipe(sassGlob())
-    .pipe(sass({
-      outputStyle: config.production ? 'compact' : 'expanded',
-      precision: 5
-    }))
+    .pipe(
+      sass({
+        outputStyle: config.production ? 'compact' : 'expanded',
+        precision: 5
+      })
+    )
     .on('error', config.errorHandler)
     .pipe(postcss(processors))
     .pipe(cleancss())
     .pipe(rename({ suffix: '.min' }))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(config.dest.css)));
+    .pipe(gulp.dest(config.dest.css))
+);
 
 gulp.task('sass:lint', () =>
-  gulp.src(`${config.src.sass}/**/*.{sass,scss}`).pipe(stylelint({
-    failAfterError: false,
-    reporters: [{ formatter: 'verbose', console: true }],
-    debug: true
-  })));
+  gulp.src(`${config.src.sass}/**/*.{sass,scss}`).pipe(
+    stylelint({
+      failAfterError: false,
+      reporters: [{ formatter: 'verbose', console: true }],
+      debug: true
+    })
+  )
+);
 
 gulp.task('sass:watch', () => {
   gulp.watch(`${config.src.sass}/**/*.{sass,scss}`, ['sass', 'sass:lint']);

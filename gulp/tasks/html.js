@@ -10,24 +10,28 @@ const config = require('../config');
 function renderHtml(onlyChanged) {
   return gulp
     .src([`${config.src.templates}/*.html`])
-    .pipe(plumber({
-      errorHandler: config.errorHandler
-    }))
+    .pipe(
+      plumber({
+        errorHandler: config.errorHandler
+      })
+    )
     .pipe(gulpif(onlyChanged, changed(config.dest.html)))
     .pipe(rigger())
     .pipe(replace(/\n\s*<!--DEV[\s\S]+?-->/gm, ''))
-    .pipe(prettify({
-      indent_size: 2,
-      brace_style: 'expand',
-      indent_inner_html: true,
-      wrap_attributes: 'auto',
-      preserve_newlines: true,
-      max_preserve_newlines: 50,
-      wrap_line_length: 120,
-      end_with_newline: true,
-      wrap_attributes_indent_size: 1,
-      unformatted: ['use']
-    }))
+    .pipe(
+      prettify({
+        indent_size: 2,
+        brace_style: 'expand',
+        indent_inner_html: true,
+        wrap_attributes: 'auto',
+        preserve_newlines: true,
+        max_preserve_newlines: 50,
+        wrap_line_length: 120,
+        end_with_newline: true,
+        wrap_attributes_indent_size: 1,
+        unformatted: ['use']
+      })
+    )
     .pipe(gulp.dest(config.dest.html));
 }
 

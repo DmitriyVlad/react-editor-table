@@ -8,10 +8,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const ArchivePlugin = require('webpack-archive-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const AutoPrefixer = require('autoprefixer');
 const FormatterPretty = require('eslint-formatter-pretty');
+
+const getDateTime = require('./scripts/getDateTime.js');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const nodeEnv = isProduction ? 'production' : 'development';
@@ -270,6 +273,9 @@ if (isProduction) {
 
     new CopyWebpackPlugin([{ from: { glob: '**/*', dot: true }, context: 'static' }], {
       ignore: ['index.html']
+    }),
+    new ArchivePlugin({
+      output: `build/build-${getDateTime()}`
     })
   ]);
 }

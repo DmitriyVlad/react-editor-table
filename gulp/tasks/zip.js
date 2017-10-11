@@ -22,9 +22,11 @@ gulp.task('zip', () => {
 
   gulp
     .src(['build/**/*', '!build/*.zip'])
-    .pipe(plumber({
-      errorHandler: config.errorHandler
-    }))
+    .pipe(
+      plumber({
+        errorHandler: config.errorHandler
+      })
+    )
     .pipe(zip(zipName))
     .pipe(gulp.dest('build'));
 });

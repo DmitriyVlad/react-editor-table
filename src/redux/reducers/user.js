@@ -1,5 +1,3 @@
-
-
 import { Record } from 'immutable';
 
 import { UserActionTypes } from '../actions/user';
@@ -26,12 +24,7 @@ const initialState = {
   profile: null
 };
 
-
-function UserReducer(
-  state = new UserState(initialState),
-  action = {}
-) {
-
+function UserReducer(state = new UserState(initialState), action = {}) {
   switch (action.type) {
     case UserActionTypes.AUTH_LOADING:
       return state.set('authLoading', true);
@@ -40,9 +33,9 @@ function UserReducer(
       return state.set('isAuthFailed', false);
 
     case UserActionTypes.AUTH_SUCCESS:
-      return state.withMutations( (s) => {
-
-        s.set('authLoading', false)
+      return state.withMutations((s) => {
+        s
+          .set('authLoading', false)
           .set('profileLoading', false)
           .set('isAuthenticated', true)
           .set('isAuthFailed', false)
@@ -50,10 +43,8 @@ function UserReducer(
       });
 
     case UserActionTypes.AUTH_ERROR:
-      return state.withMutations( (s) => {
-
-        s.set('authLoading', false)
-          .set('isAuthFailed', true);
+      return state.withMutations((s) => {
+        s.set('authLoading', false).set('isAuthFailed', true);
       });
 
     case UserActionTypes.NOT_AUTHENTICATED:
@@ -63,24 +54,18 @@ function UserReducer(
       return new UserState(initialState());
 
     case UserActionTypes.PROFILE_LOADING:
-      return state.withMutations( (s) => {
-
-        s.set('profileLoading', true)
-          .set('profileFailed', false);
+      return state.withMutations((s) => {
+        s.set('profileLoading', true).set('profileFailed', false);
       });
 
     case UserActionTypes.PROFILE_SUCCESS:
-      return state.withMutations( (s) => {
-
-        s.set('profileLoading', false)
-          .set('profile', action.profile);
+      return state.withMutations((s) => {
+        s.set('profileLoading', false).set('profile', action.profile);
       });
 
     case UserActionTypes.PROFILE_ERROR:
-      return state.withMutations( (s) => {
-
-        s.set('profileLoading', false)
-          .set('profileFailed', true);
+      return state.withMutations((s) => {
+        s.set('profileLoading', false).set('profileFailed', true);
       });
 
     default:

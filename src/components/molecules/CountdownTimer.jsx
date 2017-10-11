@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, FormattedMessage } from 'react-intl';
-import './countdown-timer.scss';
+import './CountdownTimer.scss';
 
 import { classNameElement } from 'Helpers/component';
 

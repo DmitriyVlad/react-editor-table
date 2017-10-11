@@ -1,9 +1,9 @@
-import './main.scss';
+import './Main.scss';
 
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import MainPageView from 'Components/views/main-page-view';
+import MainPageView from 'Components/views/MainPageView';
 
 import {
   classNameElement,

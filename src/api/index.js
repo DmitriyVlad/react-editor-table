@@ -3,7 +3,6 @@ import userActions from './user';
 import intlActions from './intl';
 
 export default function api(config) {
-
   const extConfig = {
     ...config,
     tokenKey: 'jwt'
@@ -15,4 +14,3 @@ export default function api(config) {
     intl: intlActions(apiHelpers)
   };
 }
-

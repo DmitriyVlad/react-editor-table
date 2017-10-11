@@ -1,8 +1,0 @@
-@import '~Styles/imports';
-
-.Icon {
-  &--menu-item {
-    @include transition(all .25s ease-in-out);
-    margin-bottom: $authorized-menu-icon-margin-bottom;
-  }
-}

@@ -1,4 +1,4 @@
-import './burger-button.scss';
+import './BurgerButton.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 

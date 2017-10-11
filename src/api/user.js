@@ -1,7 +1,5 @@
 export default function userActions(apiHelper) {
-
   function signup(formdata) {
-
     return apiHelper.fetchUnauthorized({
       endpoint: '/users',
       method: 'POST',
@@ -10,7 +8,6 @@ export default function userActions(apiHelper) {
   }
 
   function activate(token) {
-
     return apiHelper.fetchUnauthorized({
       endpoint: '/activate',
       method: 'POST',
@@ -19,7 +16,6 @@ export default function userActions(apiHelper) {
   }
 
   function checkUsernameAndEmail(formdata) {
-
     return apiHelper.fetchUnauthorized({
       endpoint: '/users?check_availability=true',
       method: 'POST',
@@ -28,7 +24,6 @@ export default function userActions(apiHelper) {
   }
 
   function login(email, password) {
-
     return apiHelper.fetchUnauthorized({
       endpoint: '/login',
       method: 'POST',
@@ -40,14 +35,12 @@ export default function userActions(apiHelper) {
   }
 
   function logout() {
-
     return apiHelper.fetchAuthorized({
       endpoint: '/logout'
     });
   }
 
   function getProfile(user) {
-
     return apiHelper.fetchAuthorized({
       endpoint: `/users/${user}`
     });

@@ -1,7 +1,6 @@
 import { UserActionTypes } from '../actions/user';
 
 function errorHandler(dispatch, err) {
-
   if (err && err.status === 401) {
     localStorage.removeItem('jwt');
     dispatch({
@@ -11,19 +10,15 @@ function errorHandler(dispatch, err) {
   throw err;
 }
 
-function apiWrapper( api ) {
-
+function apiWrapper(api) {
   const wrappedApi = {};
-  Object.keys(api).forEach( (endpoint) => {
-
+  Object.keys(api).forEach((endpoint) => {
     if (!wrappedApi[endpoint]) {
       wrappedApi[endpoint] = {};
     }
-    Object.keys(api[endpoint]).forEach( (f) => {
-
+    Object.keys(api[endpoint]).forEach((f) => {
       wrappedApi[endpoint][f] = (dispatch, ...params) =>
-
-        api[endpoint][f](...params).catch( err => errorHandler(dispatch, err));
+        api[endpoint][f](...params).catch(err => errorHandler(dispatch, err));
     });
   });
 

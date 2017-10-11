@@ -1,7 +1,5 @@
 export default function intlActions(apiHelper) {
-
   function getLocaleMarkdown(locale, id) {
-
     const baseUrl = '/assets/content/';
     const url = `${baseUrl}${id}.${locale}.md`;
     const type = 'text/x-markdown';
@@ -10,7 +8,6 @@ export default function intlActions(apiHelper) {
   }
 
   function getLocaleData(locale) {
-
     const baseUrl = '/assets/locales/';
     const url = `${baseUrl}${locale}.json`;
 

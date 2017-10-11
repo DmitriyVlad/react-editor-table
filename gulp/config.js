@@ -22,7 +22,10 @@ const config = {
   },
 
   logEnv() {
-    util.log('Environment:', util.colors.white.bgRed(` ${process.env.NODE_ENV} `));
+    util.log(
+      'Environment:',
+      util.colors.white.bgRed(` ${process.env.NODE_ENV} `)
+    );
   },
 
   errorHandler: require('./utils/handle-errors')

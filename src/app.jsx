@@ -1,4 +1,4 @@
-import './app.scss';
+import './App.scss';
 
 import React from 'react';
 import { Route, Switch } from 'react-router';
@@ -7,7 +7,7 @@ import createHistory from 'history/createBrowserHistory';
 import { Provider } from 'react-redux';
 
 // Components
-import Main from 'Components/views/main';
+import Main from 'Components/views/Main';
 
 import createStore from './redux/reducers';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './input-error.scss';
+import './InputError.scss';
 
 import { classNameModifiers } from 'Helpers/component';
 

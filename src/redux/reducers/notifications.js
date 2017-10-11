@@ -10,7 +10,6 @@ function NotificationReducer(
   state = new NotificationState(initialState),
   action = {}
 ) {
-
   switch (action.type) {
     case NotificationActionTypes.NOTIFICATION_ADD:
       return state.push({
@@ -20,10 +19,10 @@ function NotificationReducer(
       });
 
     case NotificationActionTypes.NOTIFICATION_REMOVE:
-      return state.filter( e => e.id !== action.id );
+      return state.filter(e => e.id !== action.id);
 
     case NotificationActionTypes.NOTIFICATION_PURGE:
-      return state.filter( e => e.issuer !== action.issuer );
+      return state.filter(e => e.issuer !== action.issuer);
 
     default:
       return state;

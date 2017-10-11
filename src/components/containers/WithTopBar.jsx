@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './with-top-bar.scss';
+import './WithTopBar.scss';
 
 import { classNameModifiers } from 'Helpers/component';
 

@@ -6,14 +6,10 @@
   "scripts": {
     "start": "npm run dev:hot",
     "dev:hot": "webpack-dev-server --progress --color",
-    "build":
-      "set NODE_ENV=production&& webpack --display-modules --display-chunks --progress --color --bail",
-    "lint":
-      "eslint --ext .jsx,.js --format=node_modules/eslint-formatter-pretty src/",
-    "lint:cli":
-      "eslint --ext .jsx,.js --format=node_modules/eslint-formatter-pretty",
-    "lint:autofix":
-      "eslint --fix --ext .jsx,.js --format=node_modules/eslint-formatter-pretty src/",
+    "build": "set NODE_ENV=production&& webpack --display-modules --display-chunks --progress --color --bail",
+    "lint": "eslint --ext .jsx,.js --format=node_modules/eslint-formatter-pretty src/",
+    "lint:cli": "eslint --ext .jsx,.js --format=node_modules/eslint-formatter-pretty",
+    "lint:autofix": "eslint --fix --ext .jsx,.js --format=node_modules/eslint-formatter-pretty src/",
     "lint:styles": "stylelint src/**/*.scss --syntax=scss",
     "test:orpho": "yaspeller -e .md,.html ./src/",
     "translations:check": "node ./scripts/translationcheck.js",
@@ -27,11 +23,19 @@
       "npm run lint:autofix",
       "git add"
     ],
-    "*.scss": ["stylelint --syntax=scss", "git add"],
-    "*.css": ["stylelint", "git add"]
+    "*.scss": [
+      "stylelint --syntax=scss",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint",
+      "git add"
+    ]
   },
   "author": "Dmytro Halimov",
-  "contributors": ["Dmytro Halimov <dmytro.halimov@gmail.com>"],
+  "contributors": [
+    "Dmytro Halimov <dmytro.halimov@gmail.com>"
+  ],
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -111,6 +115,7 @@
     "stylelint-selector-bem-pattern": "^2.0.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.6.0",
+    "webpack-archive-plugin": "^3.0.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
     "webpack-manifest-plugin": "^1.3.2",

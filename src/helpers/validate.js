@@ -28,12 +28,11 @@ const messages = {
 };
 
 export function email(value) {
-
-  if ( !value ) {
+  if (!value) {
     return messages.email.required;
   }
 
-  if ( !regexEmail.test(value) ) {
+  if (!regexEmail.test(value)) {
     return messages.email.inValid;
   }
 
@@ -41,12 +40,11 @@ export function email(value) {
 }
 
 export function password(value) {
-
-  if ( !value ) {
+  if (!value) {
     return messages.password.required;
   }
 
-  if ( value.length < passLength ) {
+  if (value.length < passLength) {
     return messages.password.length;
   }
 
@@ -54,12 +52,11 @@ export function password(value) {
 }
 
 export function message(value) {
-
   if (!value) {
     return messages.message.required;
   }
 
-  if ( value.length < messageLength) {
+  if (value.length < messageLength) {
     return messages.message.length;
   }
 
@@ -67,7 +64,6 @@ export function message(value) {
 }
 
 export function comparePasswords(firstValue, confirmValue) {
-
   if (firstValue === '' && confirmValue === '') {
     return messages.required;
   }
@@ -80,7 +76,6 @@ export function comparePasswords(firstValue, confirmValue) {
 }
 
 export function required(value) {
-
   if (!value) {
     return messages.required;
   }
@@ -89,7 +84,6 @@ export function required(value) {
 }
 
 export function checkAgreement(value) {
-
   if (!value) {
     return messages.agreement.required;
   }
@@ -98,8 +92,7 @@ export function checkAgreement(value) {
 }
 
 export function phone(value) {
-
-  if ( value !== '' && !isValidPhoneNumber(value) ) {
+  if (value !== '' && !isValidPhoneNumber(value)) {
     return messages.phone.invalid;
   }
 

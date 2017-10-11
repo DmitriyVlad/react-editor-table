@@ -1,4 +1,4 @@
-import './language-switch.scss';
+import './LanguageSwitch.scss';
 
 import React from 'react';
 import PropTypes from 'prop-types';

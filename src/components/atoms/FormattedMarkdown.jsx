@@ -1,4 +1,4 @@
-import './formatted-markdown.scss';
+import './FormattedMarkdown.scss';
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';

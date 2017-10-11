@@ -9,13 +9,19 @@ const config = require('../config');
 gulp.task('server', () => {
   server.init({
     server: {
-      baseDir: !config.production ? [config.dest.root, config.src.root] : config.dest.root,
+      baseDir: !config.production
+        ? [config.dest.root, config.src.root]
+        : config.dest.root,
       directory: false,
       serveStaticOptions: {
         extensions: ['html']
       }
     },
-    files: [`${config.dest.html}/*.html`, `${config.dest.css}/*.css`, `${config.dest.img}/**/*`],
+    files: [
+      `${config.dest.html}/*.html`,
+      `${config.dest.css}/*.css`,
+      `${config.dest.img}/**/*`
+    ],
     port: util.env.port || 8080,
     logLevel: 'info', // 'debug', 'info', 'silent', 'warn'
     logConnections: false,

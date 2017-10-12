@@ -53,7 +53,9 @@
     "url": "http://d.halimov@gs00.maxpro.company/boilerplates/react-starter.git"
   },
   "prettier": {
-    "singleQuote": true
+    "singleQuote": true,
+    "eslintIntegration": true,
+    "stylelintIntegration": true
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

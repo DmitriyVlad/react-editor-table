@@ -2,15 +2,15 @@
 @mixin font-face($font-name, $file-name) {
   @font-face {
     font-family: quote($font-name);
+    font-style: normal;
+    font-weight: normal;
     src: url('../static/fonts/'+ $file-name + '.eot');
     src: url('../static/fonts/'+$file-name+'.eot?#iefix')
-        format('embedded-opentype'),
+      format('embedded-opentype'),
       url('../static/fonts/'+$file-name+'.woff') format('woff'),
       url('../static/fonts/'+$file-name+'.woff2') format('woff2'),
       url('../static/fonts/'+$file-name+'.ttf') format('truetype'),
       url('../static/fonts/'+$file-name+'.svg##{$font-name}') format('svg');
-    font-weight: normal;
-    font-style: normal;
   }
 }
 
@@ -39,8 +39,8 @@
   &::-ms-clear,
   &::-ms-reveal {
     display: none;
-    width: 0;
     height: 0;
+    width: 0;
   }
 
   &::-webkit-search-decoration,
@@ -158,9 +158,9 @@
   $at2x_path: '#{$path}@2x.#{$ext}';
 
   background-image: url('#{$at1x_path}');
-  background-size: $w $h;
   background-position: $pos;
   background-repeat: $repeat;
+  background-size: $w $h;
 
   @media all and (-webkit-min-device-pixel-ratio: 1.5),
     all and (-o-min-device-pixel-ratio: 3/2),
@@ -179,10 +179,10 @@
 
 //---------------COVERDIV-------------------
 @mixin coverdiv {
-  position: absolute;
-  left: 0;
-  top: 0;
   height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
   width: 100%;
 }
 
@@ -195,49 +195,49 @@
 
 //---------------VERTICAL CENTER-------------------
 @mixin vcenter {
+  left: 50%;
   position: absolute;
   top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
 }
 
 //---------------JUSTIFY-------------------
 @mixin justify {
-  text-align: justify;
-  line-height: 0;
   font-size: 0;
-  text-justify: newspaper;
+  line-height: 0;
+  text-align: justify;
   text-align-last: justify;
+  text-justify: newspaper;
 
   &:after {
     content: '';
     display: inline-block;
-    width: 100%;
-    height: 0px;
-    visibility: hidden;
+    height: 0;
     overflow: hidden;
+    visibility: hidden;
+    width: 100%;
   }
 }
 
 //---------------VERTICAL JUSTIFY-------------------
 @mixin vertical-justify {
-  text-align: center;
   font-size: 0;
+  text-align: center;
 
   &:before {
     content: '';
     display: inline-block;
+    height: 100%;
     vertical-align: middle;
     width: 0;
-    height: 100%;
   }
 }
 
 //---------------PREVENT-TEXT-------------------
 @mixin prevent-text {
+  hyphens: auto;
   word-break: break-all;
   word-break: break-word;
-  hyphens: auto;
 }
 
 //---------------GPU-------------------

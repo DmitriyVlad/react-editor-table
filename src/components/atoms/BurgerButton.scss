@@ -1,39 +1,39 @@
 @import '~Styles/imports';
 
 .BurgerButton {
-  margin-top: $burger-margin-top;
-  float: right;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  box-sizing: content-box;
-  height: $burger-size;
-  width: $burger-size;
-  padding: $burger-padding;
   background: 0 0;
-  user-select: none;
-  touch-action: manipulation;
-  cursor: pointer;
   border: none;
+  box-sizing: content-box;
+  cursor: pointer;
+  display: flex;
+  float: right;
+  height: $burger-size;
+  justify-content: center;
+  margin-top: $burger-margin-top;
+  padding: $burger-padding;
+  touch-action: manipulation;
+  user-select: none;
+  width: $burger-size;
 
   &__icon {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: $burger-icon-height;
-    vertical-align: bottom;
     background: $color-bg-accent;
+    display: inline-block;
+    height: $burger-icon-height;
+    position: relative;
+    vertical-align: bottom;
+    width: 100%;
 
     &:before,
     &:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: $burger-icon-height;
       background: $color-bg-accent;
+      content: '';
+      height: $burger-icon-height;
+      left: 0;
+      position: absolute;
       transform-origin: 50% 50%;
       transition: background-color 0.25s ease-out, transform 0.25s ease-out;
+      width: 100%;
     }
 
     &:before {

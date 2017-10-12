@@ -6,11 +6,16 @@
   "scripts": {
     "start": "npm run dev:hot",
     "dev:hot": "webpack-dev-server --progress --color",
-    "build": "set NODE_ENV=production&& webpack --display-modules --display-chunks --progress --color --bail",
-    "lint": "eslint --ext .jsx,.js --format=node_modules/eslint-formatter-pretty src/",
-    "lint:cli": "eslint --ext .jsx,.js --format=node_modules/eslint-formatter-pretty",
-    "lint:autofix": "eslint --fix --ext .jsx,.js --format=node_modules/eslint-formatter-pretty src/",
+    "build":
+      "set NODE_ENV=production&& webpack --display-modules --display-chunks --progress --color --bail",
+    "lint":
+      "eslint --ext .jsx,.js --format=node_modules/eslint-formatter-pretty src/",
+    "lint:cli":
+      "eslint --ext .jsx,.js --format=node_modules/eslint-formatter-pretty",
+    "lint:autofix":
+      "eslint --fix --ext .jsx,.js --format=node_modules/eslint-formatter-pretty src/",
     "lint:styles": "stylelint src/**/*.scss --syntax=scss",
+    "lint-styles:autofix": "stylelint src/**/*.scss --syntax=scss --fix",
     "test:orpho": "yaspeller -e .md,.html ./src/",
     "translations:check": "node ./scripts/translationcheck.js",
     "precommit": "lint-staged",
@@ -33,19 +38,15 @@
       "npm run lint:autofix",
       "git add"
     ],
-    "*.scss": [
-      "stylelint --syntax=scss",
-      "git add"
-    ],
+    "*.scss": ["npm run lint:styles", "npm run lint-styles:autofix", "git add"],
     "*.css": [
-      "stylelint",
+      "stylelint src/**/*.css",
+      "stylelint src/**/*.css --fix",
       "git add"
     ]
   },
   "author": "Dmytro Halimov",
-  "contributors": [
-    "Dmytro Halimov <dmytro.halimov@gmail.com>"
-  ],
+  "contributors": ["Dmytro Halimov <dmytro.halimov@gmail.com>"],
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -123,6 +124,7 @@
     "stylelint-config-sass-guidelines": "^3.1.0",
     "stylelint-config-standard": "^17.0.0",
     "stylelint-selector-bem-pattern": "^2.0.0",
+    "stylelint-webpack-plugin": "^0.9.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.6.0",
     "webpack-archive-plugin": "^3.0.0",

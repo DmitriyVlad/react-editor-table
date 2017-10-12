@@ -2,40 +2,39 @@
 
 
 .CountdownTimer {
-  color: #ffffff;
-  font-size: $font-size-xl;
+  color: #fff;
   display: none;
+  font-size: $font-size-xl;
 
   @include susy-breakpoint($breakpoint-width-m) {
-   display: block;
+    display: block;
   }
 
   &__block {
-    width: $timer-block-width;
     float: left;
     margin-right: $timer-block-margin;
+    width: $timer-block-width;
 
     .CountdownTimer__title {
-      color: #ffffff;
-      text-align: center;
+      color: #fff;
       font-family: $font-family-accent;
       font-weight: $font-weight-medium;
+      text-align: center;
     }
 
     .CountdownTimer__digits {
-
       .CountdownTimer__digit {
-        width: $timer-digit-width;
-        height: $timer-digit-height;
-        font-weight: $font-weight-regular;
-        font-size: $pt-font-size-small-3;
-        font-family: $font-family-accent;
         background-color: rgba(42, 42, 42, 0.5);
-        display: inline-block;
         border-radius: $timer-digit-border-radius;
+        display: inline-block;
+        font-family: $font-family-accent;
+        font-size: $pt-font-size-small-3;
+        font-weight: $font-weight-regular;
+        height: $timer-digit-height;
         margin-right: $timer-digit-margin;
-        text-align: center;
         padding-top: $timer-digit-padding-top;
+        text-align: center;
+        width: $timer-digit-width;
 
         & + span {
           margin-right: 0;

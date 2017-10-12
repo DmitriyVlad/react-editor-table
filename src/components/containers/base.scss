@@ -1,33 +1,32 @@
 @import '~Styles/imports';
-  $susy: (
-    flow: ltr,
-    math: fluid,
-    output: float,
-    gutter-position: after,
-    container: $container-base-width,
-    container-position: center,
-    columns: 12,
-    gutters: 1/2.3,
-    column-width: false,
-    global-box-sizing: border-box,
-    last-flow: to,
-    debug: (
-      image: hide,
-      color: rgba(#66f, .25),
-      output: background,
-      toggle: top right,
-    ),
-    use-custom: (
-      background-image: true,
-      background-options: false,
-      box-sizing: true,
-      clearfix: true,
-      rem: true,
-    )
-  );
+$susy: (
+  flow: ltr,
+  math: fluid,
+  output: float,
+  gutter-position: after,
+  container: $container-base-width,
+  container-position: center,
+  columns: 12,
+  gutters: 1/2.3,
+  column-width: false,
+  global-box-sizing: border-box,
+  last-flow: to,
+  debug: (
+    image: hide,
+    color: rgba(#66f, .25),
+    output: background,
+    toggle: top right,
+  ),
+  use-custom: (
+    background-image: true,
+    background-options: false,
+    box-sizing: true,
+    clearfix: true,
+    rem: true,
+  )
+);
   
 .Base {
-
   &--fill {
     .Base__Content {
       max-width: 100%;
@@ -39,7 +38,7 @@
 
 .Base__Content {
   @include container;
-  position: relative;
   max-width: $container-base-width;
   padding: 0;
+  position: relative;
 }

@@ -1,43 +1,41 @@
 @import '~Styles/imports';
 
 $susy: (
-    flow: ltr,
-    math: fluid,
-    output: float,
-    gutter-position: after,
-    container: $container-base-width,
-    container-position: center,
-    columns: 12,
-    gutters: 1/2.3,
-    column-width: false,
-    global-box-sizing: border-box,
-    last-flow: to,
-    debug: (
-      image: show,
-      color: rgba(#66f, .25),
-      output: background,
-      toggle: top right,
-    ),
-    use-custom: (
-      background-image: true,
-      background-options: false,
-      box-sizing: true,
-      clearfix: true,
-      rem: true,
-    )
-  );
+  flow: ltr,
+  math: fluid,
+  output: float,
+  gutter-position: after,
+  container: $container-base-width,
+  container-position: center,
+  columns: 12,
+  gutters: 1/2.3,
+  column-width: false,
+  global-box-sizing: border-box,
+  last-flow: to,
+  debug: (
+    image: show,
+    color: rgba(#66f, .25),
+    output: background,
+    toggle: top right,
+  ),
+  use-custom: (
+    background-image: true,
+    background-options: false,
+    box-sizing: true,
+    clearfix: true,
+    rem: true,
+  )
+);
 
 .FormattedMarkdown {
-
   & h2 {
-    font-family: $font-family-accent;
-    font-weight: $font-weight-medium;
-    font-size: $pt-font-size-small-3;
     color: $color-accent;
+    font-family: $font-family-accent;
+    font-size: $pt-font-size-small-3;
+    font-weight: $font-weight-medium;
   }
 
   &--leftBlock {
-
     & h2 {
       margin-bottom: $become-title-margin-bottom;
       margin-top: $become-title-margin-top-s;
@@ -48,9 +46,9 @@ $susy: (
       }
 
       @include susy-breakpoint($breakpoint-width-l) {
-        text-align: left;
         font-size: $font-size-xxxl;
         margin-top: 0;
+        text-align: left;
       }
     }
 
@@ -73,26 +71,25 @@ $susy: (
   }
 
   &--rightBlock {
-
     & h2 {
       margin-bottom: $become-title-margin-bottom;
       margin-top: $become-title-margin-top-s;
       text-align: center;
 
       @include susy-breakpoint($breakpoint-width-m) {
-        margin-top: 0;
         font-size: $pt-font-size-large-2;
+        margin-top: 0;
       }
 
       @include susy-breakpoint($breakpoint-width-l) {
-        text-align: right;
         font-size: $font-size-xxxl;
+        text-align: right;
       }
     }
 
     & p {
-      text-align: center;
       margin-bottom: $become-text-margin-bottom;
+      text-align: center;
 
       @include susy-breakpoint($breakpoint-width-l) {
         text-align: right;
@@ -114,8 +111,8 @@ $susy: (
     & h3 {
       font-size: $font-size-xl;
       margin-bottom: $about-block-title-margin-bottom;
-      position: relative;
       margin-left: 50%;
+      position: relative;
 
       @include susy-breakpoint($breakpoint-width-s) {
         margin-left: 40%;
@@ -138,13 +135,13 @@ $susy: (
       }
 
       &:before {
+        background-color: $color-bg-accent;
+        bottom: $hr-bottom-position;
         content: '';
         height: $hr-height;
-        width: $hr-width;
-        background-color: $color-bg-accent;
-        position: absolute;
-        bottom: $hr-bottom-position;
         left: 0%;
+        position: absolute;
+        width: $hr-width;
       }
     }
 
@@ -167,8 +164,8 @@ $susy: (
 
     h2,
     h3 {
-      font-size: $pt-font-size-small-3;
       color: $color-text-main;
+      font-size: $pt-font-size-small-3;
       margin-bottom: $section-text-margin-bottom;
       margin-top: $info-caption-margin-top;
     }
@@ -177,11 +174,11 @@ $susy: (
       margin-bottom: $section-text-margin-bottom;
 
       &:last-child {
+        font-family: $font-family-primary;
+        font-size: $font-size-xl;
         line-height: 1.2em;
         margin: $info-caption-margin-top-large 0 0;
         text-align: center;
-        font-family: $font-family-primary;
-        font-size: $font-size-xl;
       }
     }
   }

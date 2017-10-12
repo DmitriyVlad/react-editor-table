@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ArchivePlugin = require('webpack-archive-plugin');
 const HappyPack = require('happypack');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const AutoPrefixer = require('autoprefixer');
@@ -161,6 +162,13 @@ const webpackConfig = {
           }
         }
       ]
+    }),
+    new StyleLintPlugin({
+      configFile: '.stylelintrc',
+      context: 'src',
+      files: '**/*.scss',
+      failOnError: false,
+      syntax: 'scss'
     }),
     new ExtractTextPlugin({
       filename: 'assets/css/[name].[contenthash].css',

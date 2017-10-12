@@ -14,3 +14,5 @@
 // import 'redux-immutable';
 // import 'redux-thunk';
 // import 'whatwg-fetch';
+
+var b = 5;

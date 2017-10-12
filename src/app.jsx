@@ -15,7 +15,6 @@ const history = createHistory();
 const store = createStore(history);
 
 function App() {
-
   return (
     <Provider store={ store }>
       <ConnectedRouter history={ history }>

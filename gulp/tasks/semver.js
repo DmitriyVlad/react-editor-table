@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const gulp = require('gulp');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const bump = require('gulp-bump');
 
 const dest = gulp.dest('./');

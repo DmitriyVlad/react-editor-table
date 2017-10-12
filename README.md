@@ -5,11 +5,36 @@
 
 A brief description of your project, what it is used for.
 
+## Table of contents
+
+- [Demo](#demo)
+- [Installing/Getting Started](#installing-getting-started)
+- [Tasks](#tasks)
+- [Developing](#developing)
+    - [Built With](#built-with)
+    - [Prerequisites](#prerequisites)
+    - [Development Setup](#development-setup)
+    - [Structure](#structure)
+    - [React Components](#react-components)
+    - [Styles](#styles)
+    - [Linting/Formatting](#linting-formatting)
+    - [Git Hooks](#git-hooks)
+    - [Building](#building)
+    - [Internationalization](#internationalization)
+    - [Deploying/Publishing](#deploying-publishing)
+- [Versioning](#versioning)
+- [Configuration](#configuration)
+- [Tests](#tests)
+- [Style guide](#style-guide)
+- [Api Reference](#api-reference)
+- [Database](#database)
+- [Licensing](#licensing)
+
 ## Demo
 
 A demonstration of this app can be seen ...
 
-## Installing / Getting started
+## Installing / Getting Started
 
 A quick introduction of the minimal setup you need to get a hello world up &
 running.
@@ -30,6 +55,10 @@ Here you should say what actually happens when you execute the code above.
 * `npm run lint:styles` - linting `.scss` styles with **stylelint**
 * `npm run test:orpho` - test orthography in `.html` and `.md` files
 * `npm run translations:check` - run translationcheck script
+* `npm run patch` - bump new patch version of the project
+* `npm run minor` - bump new minor version of the project
+* `npm run major` - bump new major version of the project
+* `npm run semver:reset` - reset version to 0.1.0
 
 ## Developing
 
@@ -40,14 +69,17 @@ List main libraries, frameworks used including versions (React, Angular, etc...)
 * React
 * React-Router
 * Redux
+* Immutable.js
 * Babel
 * Webpack
+* Sass
+* Gulp
 
 ### Prerequisites
 
 What is needed to set up the dev environment. For instance, global dependencies or any other tools. include download links.
 
-You should have installed [Node.js](https://nodejs.org/en/) version 6.11.1 or later.
+You should have installed [Node.js](https://nodejs.org/en/) version 6.11.1 or later and [Ruby](https://rubyinstaller.org/) for Sass.
 
 ### Development Setup
 
@@ -91,56 +123,48 @@ And state what happens step-by-step. If there is any virtual environment, local 
 
 ### Structure
 
-* **docs** - Documentation for project
-  * **designs** - 
-* **public** - static content for the build that are not part of the react app
-* **src** - all source files
-  * src/**actions** - redux actions
-  * src/**api** - api client to be used by the actions
-  * src/**components** - react components
-    * src/components/**atoms** - atomic components if not provided by blueprint (those will be functions most of the time)
-    * src/components/**molecules** - Class components combining Atoms (own and blueprint)
-    * src/components/**organisms** - more complex components, can connect to redux store
-    * src/components/**containers** - Layout components to be used in views
-    * src/components/**views** - View components, also used for routing within the app
-* **styles** - global sass styles
-  * styles/**mixin** - sass mixins
-  * styles/**typography** - styles for typography
-  * styles/**variables** - global variables
-
 ```bash
 build/                        # Build folder
-designs/                     # All layouts, sketchs and etc (.psd, .ai, etc.)
+designs/                      # All layouts, sketchs and etc (.psd, .ai, etc.)
 docs/                         # Documentation for project
-public/                       # Static content for the build that are not part of the app
+gulp/                         # Gulp files
+    tasks/                    # Tasks for Gulp
+        semver.js             # Task for semantic updating project version
+static/                       # Static content for the build (html files, favicons, etc)
 scripts/                      # Utility scripts
 src/                          # Source folder
-    actions/                  # Redux actions
     api/                      # Api client to be used by the actions
+        helpers.js            # Agnostic helper calls
+        index.js              # Root file for api
     components/               # React components
         atoms/                # Atomic components
         molecules/            # Class components combining Atoms
         organisms/            # More complex components, can connect to redux store
         containers/           # Layout components to be used in views
+        helpers/              # Helper components
         views/                # View components, also used for routing within the app
-    img/                      # Images
-        svg/                  # SVG images
+    helpers/                  # Helper scripts
+    redux/                    # All redux stuff
+        actions/              # Redux actions
+        lib/                  # Additional scripts for api
+        reducers/             # Redux reducers
     styles/                   # Global Styles
         generated/            # Generated styles (for sprites)
         helpers/              # Helper files
             _fonts.scss       # Include fonts
-            _grid.scss        # Styles for grid
             _mixins.scss      # Mixins
-            _typography.scss  # Styles for typography
             _variables.scss   # Global variables
-        _base.scss            # Base styles
-        _print.scss           # Styles for print
-        main.scss             # Our root file in which imports all other styles
+        base.scss             # Base styles
+        print.scss            # Styles for print
+        grid.scss             # Styles for grid
+        imports.scss          # Stuff which we basically need in every component
+        typography.scss       # Styles for typography
 .editorconfig                 # Configuration for editors
 .eslintrc                     # Configuration for ESLint
 .eslintignore                 # List of excluded file for ESLint
 .gitignore                    # List of excluded files for Git
 .stylelintrc                  # Configuration for Stylelint
+gulpfile.js                   # Root file for running Gulp
 package.json                  # Project configuration
 README.md                     # Documentation for this starter project
 webpack.config.js             # Configuration for Webpack
@@ -165,9 +189,9 @@ webpack.config.js             # Configuration for Webpack
 
 For code linting we are using [ESLint](http://eslint.org/) and [Prettier](https://prettier.io/) for code formatting.
 
-When you run dev environment with command `npm run dev:hot`, you can see all eslint errors and warnings in your shell
+When you run dev environment with command `npm run dev:hot`, you can see all eslint errors and warnings in your shell.
 
-for an explicit linting from shell run one of these commands:
+For an explicit linting from shell run one of these commands:
 
 ```bash
 npm run lint
@@ -181,7 +205,15 @@ npm run lint:cli
 npm run lint:autofix
 ```
 
-### Git hooks
+Also, we are using [Stylelint](https://stylelint.io/) for linting styles.
+
+For an explicit linting style from shell run this command:
+
+```bash
+npm run lint:styles
+```
+
+### Git Hooks
 
 We are using [husky](https://github.com/typicode/husky) and [lint-staged](https://github.com/okonet/lint-staged). Before each `git commit` the linter for scripts and styles is launched.
 
@@ -224,7 +256,25 @@ And again you'd need to tell what the previous code actually does.
 
 ## Versioning
 
-We can maybe use [SemVer](http://semver.org/) for versioning. For the versions available, see the [link to tags on this repository](/tags).
+We are using sematic versioning for our project [SemVer](http://semver.org/).
+
+You can run one of these commands:
+
+```bash
+npm run patch
+```
+
+```bash
+npm run minor
+```
+
+```bash
+npm run major
+```
+
+```bash
+npm run semver:reset
+```
 
 ## Configuration
 
@@ -239,7 +289,7 @@ Explain what these tests test and why.
 Give an example
 ```
 
-## Style guide
+## Style Guide
 
 Explain your code style and show how to check it.
 

@@ -9,6 +9,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ArchivePlugin = require('webpack-archive-plugin');
+const HappyPack = require('happypack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const AutoPrefixer = require('autoprefixer');
@@ -56,17 +57,8 @@ const webpackConfig = {
       },
       {
         test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        options: {
-          presets: [['es2015', { modules: false }], 'react', 'stage-2'],
-          env: {
-            development: {
-              presets: ['react-hmre']
-            }
-          },
-          plugins: ['react-hot-loader/babel', 'transform-runtime']
-        }
+        loader: 'happypack/loader',
+        exclude: /node_modules/
       },
       {
         test: /\.s?css$/,
@@ -151,6 +143,25 @@ const webpackConfig = {
     ]
   },
   plugins: [
+    new HappyPack({
+      verbose: true,
+      cache: true,
+      threads: 4,
+      loaders: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: [['es2015', { modules: false }], 'react', 'stage-2'],
+            env: {
+              development: {
+                presets: ['react-hmre']
+              }
+            },
+            plugins: ['react-hot-loader/babel', 'transform-runtime']
+          }
+        }
+      ]
+    }),
     new ExtractTextPlugin({
       filename: 'assets/css/[name].[contenthash].css',
       disable: !isProduction, // true for dev

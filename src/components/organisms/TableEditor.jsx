@@ -47,7 +47,6 @@ export default class TableEditor extends Component {
   }
 
   parseCSV(csvText) {
-    const values = [];
     const csvRows = csvText.split(/\r?\n|\r/);
     const rows = [];
 
@@ -90,8 +89,6 @@ export default class TableEditor extends Component {
             });
 
             return;
-          } else if (j === 1) {
-            values.push(cells[j]);
           }
         }
       }

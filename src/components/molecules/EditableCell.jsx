@@ -50,9 +50,17 @@ export default class EditableCell extends Component {
 
   handleBlur(event) {
     const newValue = event.target.value;
+    const { active } = this.state;
     const defaultValue = event.target.defaultValue;
 
-    if (defaultValue === newValue) return;
+    if (active && defaultValue === newValue) {
+      this.setState({
+        active: false,
+        isInvalid: false
+      });
+    } else if (!active && defaultValue === newValue) {
+      return;
+    }
 
     const { type, onCellChange } = this.props;
     let isValid = false;

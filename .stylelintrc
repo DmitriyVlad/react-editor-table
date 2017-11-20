@@ -4,6 +4,7 @@
   "rules": {
     "property-case": "lower",
     "selector-type-case": "lower",
+    "selector-class-pattern": "[a-zA-Z0-9]+$",
     "no-unknown-animations": true,
     "indentation": 2,
     "selector-max-compound-selectors": 3,

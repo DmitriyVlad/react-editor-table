@@ -1,7 +1,7 @@
 {
-  "name": "react-starter",
+  "name": "react-table-editor",
   "version": "0.1.0",
-  "description": "Starter project for app's with React and Redux",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "npm run dev:hot",
@@ -50,7 +50,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "http://d.halimov@gs00.maxpro.company/boilerplates/react-starter.git"
+    "url": ""
   },
   "prettier": {
     "singleQuote": true,
@@ -61,21 +61,10 @@
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "es6-promise": "^4.1.1",
-    "history": "^4.7.2",
-    "immutability-helper": "^2.4.0",
-    "immutable": "^3.8.2",
     "normalize.css": "^7.0.0",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
-    "react-router-redux": "^5.0.0-alpha.6",
-    "redux": "^3.7.2",
-    "redux-immutable": "^4.0.0",
-    "redux-thunk": "^2.2.0",
-    "susy": "^3.0.1",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {

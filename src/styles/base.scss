@@ -1,22 +1,18 @@
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 body {
   background: #fff;
   color: #666;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
-  letter-spacing: 1px;
   line-height: 1.2;
   min-height: 100%;
   overflow-x: hidden;
-  padding-bottom: 20px;
+  /* stylelint-disable-next-line property-no-vendor-prefix*/
   -webkit-text-size-adjust: 100%;
-}
-
-span {
-  font-size: 21px;
 }

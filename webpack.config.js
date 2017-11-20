@@ -24,7 +24,7 @@ const nodeEnv = isProduction ? 'production' : 'development';
 const webpackConfig = {
   context: __dirname,
   entry: {
-    kangacoach: ['./src/index.jsx'],
+    app: ['./src/index.jsx'],
     vendor: ['./src/vendor.js']
   },
   output: {
@@ -200,7 +200,8 @@ const webpackConfig = {
     }),
     new webpack.ProvidePlugin({
       Promise: 'es6-promise',
-      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+      fetch:
+        'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
@@ -301,9 +302,12 @@ if (isProduction) {
       fileName: 'build-manifest.json'
     }),
 
-    new CopyWebpackPlugin([{ from: { glob: '**/*', dot: true }, context: 'static' }], {
-      ignore: ['index.html']
-    }),
+    new CopyWebpackPlugin(
+      [{ from: { glob: '**/*', dot: true }, context: 'static' }],
+      {
+        ignore: ['index.html']
+      }
+    ),
     new ArchivePlugin({
       output: `build/build-${getDateTime()}`
     })

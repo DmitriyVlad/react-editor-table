@@ -26,11 +26,16 @@ export default class UploadForm extends Component {
   handleFileUpload(event) {
     event.preventDefault();
 
+    const { file } = this.state;
     const files = event.target.files;
     const selectedFile = files[0];
     const { onError } = this.props;
 
-    if (files.length === 0) {
+    if (file && files.length === 0) {
+      return;
+    }
+
+    if (!file && files.length === 0) {
       onError(true, errorMessages.fileNotSelected);
 
       return;

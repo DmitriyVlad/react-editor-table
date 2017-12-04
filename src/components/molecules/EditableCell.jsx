@@ -20,6 +20,7 @@ export default class EditableCell extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleDoubleClick = this.handleDoubleClick.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   handleChange(event) {
@@ -92,6 +93,14 @@ export default class EditableCell extends Component {
     onCellChange(newValue);
   }
 
+  handleKeyDown(event) {
+    const keyCode = event.keyCode || event.which;
+
+    if (keyCode === 13) {
+      this.handleBlur(event);
+    }
+  }
+
   render() {
     const classBase = 'EditableCell';
     const { theme, value } = this.props;
@@ -110,6 +119,7 @@ export default class EditableCell extends Component {
             readOnly={ !this.state.active }
             isInvalid={ this.state.isInvalid }
             onChange={ this.handleChange }
+            onKeyDown={ this.handleKeyDown }
             inputRef={ (input) => {
               this.textInput = input;
             } }

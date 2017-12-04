@@ -26,6 +26,7 @@ export default class EditableCell extends Component {
   handleChange(event) {
     const newValue = event.target.value;
     const { type } = this.props;
+    const { isInvalid } = this.state;
     let isValid = false;
 
     if (type === 'string') {
@@ -36,9 +37,9 @@ export default class EditableCell extends Component {
       isValid = validator.isNumeric(newValue);
     }
 
-    if (!isValid) {
+    if (isInvalid !== !isValid) {
       this.setState({
-        isInvalid: true
+        isInvalid: !isValid
       });
     }
   }

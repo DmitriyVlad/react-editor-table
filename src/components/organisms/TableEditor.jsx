@@ -47,7 +47,7 @@ export default class TableEditor extends Component {
   }
 
   parseCSV(csvText) {
-    const csvRows = csvText.split(/\r?\n|\r/);
+    const csvRows = csvText.trim().split(/\r?\n|\r/);
     const rows = [];
 
     for (let i = 0; i < csvRows.length; i += 1) {

@@ -2,7 +2,7 @@
 
 import './vendor.scss';
 
-import 'es6-promise';
+// import 'es6-promise';
 import 'react';
 import 'react-dom';
-import 'whatwg-fetch';
+// import 'whatwg-fetch';

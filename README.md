@@ -15,6 +15,8 @@ A demonstration of this app can be seen here: [demo](https://react-table-editor.
 
 ## Installing
 
+You should have installed [Node.js](https://nodejs.org/en/) version 6.11.1 or later.
+
 1. Clone this repository and go to the project folder
 
    ```bash
@@ -47,6 +49,8 @@ A demonstration of this app can be seen here: [demo](https://react-table-editor.
 Input is a CSV file with two columns. Its first row is headers, all
 subsequent - data itself. First column contains a string value and second one a numeric one.
 
+You can use example csv file for testing. File located in example-data folder.
+
 Example input:
 
 ```
@@ -58,3 +62,5 @@ Evil,28
 
 Aggregated results widgetshows sum of all the numeric values and average
 value.
+
+In **example-data** folder you can find example csv file for testing app.

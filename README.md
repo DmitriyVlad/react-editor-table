@@ -60,7 +60,7 @@ Acme,7
 Evil,28
 ```
 
-Aggregated results widgetshows sum of all the numeric values and average
+Aggregated results widget shows sum of all the numeric values and average
 value.
 
 In **example-data** folder you can find example csv file for testing app.

@@ -58,7 +58,7 @@ const webpackConfig = {
       },
       {
         test: /\.(js|jsx)$/,
-        loader: 'happypack/loader',
+        loader: 'happypack/loader?id=jsx',
         exclude: /node_modules/
       },
       {
@@ -145,8 +145,8 @@ const webpackConfig = {
   },
   plugins: [
     new HappyPack({
+      id: 'jsx',
       verbose: true,
-      cache: true,
       threads: 4,
       loaders: [
         {
@@ -200,8 +200,7 @@ const webpackConfig = {
     }),
     new webpack.ProvidePlugin({
       Promise: 'es6-promise',
-      fetch:
-        'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
@@ -218,7 +217,7 @@ if (!isProduction) {
 
   webpackConfig.devServer = {
     host: '0.0.0.0',
-    port: 9000,
+    port: 3000,
     compress: false,
     contentBase: path.join(__dirname, 'public'),
     inline: true,
@@ -302,12 +301,9 @@ if (isProduction) {
       fileName: 'build-manifest.json'
     }),
 
-    new CopyWebpackPlugin(
-      [{ from: { glob: '**/*', dot: true }, context: 'static' }],
-      {
-        ignore: ['index.html']
-      }
-    ),
+    new CopyWebpackPlugin([{ from: { glob: '**/*', dot: true }, context: 'static' }], {
+      ignore: ['index.html']
+    }),
     new ArchivePlugin({
       output: `build/build-${getDateTime()}`
     })

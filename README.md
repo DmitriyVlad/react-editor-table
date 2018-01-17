@@ -47,9 +47,7 @@ You should have installed [Node.js](https://nodejs.org/en/) version 6.11.1 or la
 ## Data Schema
 
 Input is a CSV file with two columns. Its first row is headers, all
-subsequent - data itself. First column contains a string value and second one a numeric one.
-
-You can use example csv file for testing. File located in example-data folder.
+subsequent - data itself. First column contains a string value and second one a numeric value.
 
 Example input:
 
